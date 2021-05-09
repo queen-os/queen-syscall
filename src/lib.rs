@@ -4,11 +4,15 @@
 #[macro_use]
 extern crate num_derive;
 
-pub use self::number::*;
+#[cfg(target_arch = "aarch64")]
 pub use self::arch::*;
-pub use self::error::*;
+pub use self::{data::*, error::*, number::*};
 
-pub mod number;
 #[cfg(target_arch = "aarch64")]
 pub mod arch;
+pub mod data;
 pub mod error;
+pub mod number;
+#[cfg(target_arch = "aarch64")]
+pub mod call;
+pub mod flags;
