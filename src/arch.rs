@@ -6,7 +6,7 @@ macro_rules! syscall {
             pub unsafe fn $name($a: usize, $($b: usize, $($c: usize, $($d: usize, $($e: usize, $($f: usize)?)?)?)?)?) -> crate::Result<usize> {
                 let ret: usize;
 
-                asm!(
+                core::arch::asm!(
                     "svc 0",
                     in("x8") $a,
                     $(
